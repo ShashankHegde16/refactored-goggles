@@ -1,12 +1,20 @@
 package main
 
+import (
+	"github.com/gin-gonic/gin"
+)
+
 func main() {
 
-	cards := addDeck()
-	cards.shuffle()
-	cards.print()
-}
+	// cards := addDeck()
+	// cards.shuffle()
+	// cards.print()
 
-func newName() string {
-	return "Shashank"
+	r := gin.Default()
+	r.GET("/ping", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"message": "Conenction to server success!!",
+		})
+	})
+	r.Run()
 }
